@@ -1,0 +1,97 @@
+{% extends 'main/base.html'%}
+
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+<style type="text/css">
+a {color:#fff;}
+#player {width:220px; height:20px;}
+table {text-align:center;}
+.w {align:center;}
+#logout{color:#000}
+#jumbo {margin:0;}
+</style>
+
+<div id="jumbo" class="jumbotron jumbotron-fluid" style="margin-top:50px;margin-bottom:0;">
+  <div class="container">
+  {% if user.is_authenticated %}
+    <h1 class="display-4">{{user}}</h1>
+    <h2><a id="logout" href="/logout/" >logout</a></h2>
+  {% endif %}
+    <h1><pre id="abcd"></pre></h1>
+    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+  </div>
+</div>
+
+<div class="container">
+<table class="table table-striped">
+<thead>
+<tr id="first">
+	<th scope="col" >#</th>
+	<th scope="col">سورة</th>
+	<th scope="col">الاستماع</th>
+	<th scope="col">تحميل</th>
+</tr>
+</thead>
+<tbody>
+{% for x in object_list %}
+<tr>
+	<th scope="row">{{x.id}}</th>
+	<td>{{x.title}}</td>
+	<td><audio src="{{ x.file.url }}" id="player" controls>
+	</audio></td>
+	<td><button class="btn btn-dark btn-sm"><a href="{{ x.file.url }}" ><i class="fas fa-download"></i></a></button></td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+<nav>
+	<div class="navbar navbar with form:">
+	</div>
+</nav>
+
+  <span class="badge badge-secondary">abcd</span>
+  <p>dhdhdjxfgddgffjdyhdthsggegfg</p>
+  <p>dhdhdjxfgddgffjdyhdthsggegfg</p>
+  <p>dhdhdjxfgddgffjdyhdthsggegfg</p>
+  <p>dhdhdjxfgddgffjdyhdthsggegfg</p>
+  <p>dhdhdjxfgddgffjdyhdthsggegfg</p>
+  <p>dhdhdjxfgddgffjdyhdthsggegfg</p>
+  <p>dhdhdjxfgddgffjdyhdthsggegfg</p>
+  <p>dhdhdjxfgddgffjdyhdthsggegfg</p>
+  <p>dhdhdjxfgddgffjdyhdthsggegfg</p>
+  <p>dhdhdjxfgddgffjdyhdthsggegfg</p>
+  <p>dhdhdjxfgddgffjdyhdthsggegfg</p>
+  <p>dhdhdjxfgddgffjdyhdthsggegfg</p>
+  <p>dhdhdjxfgddgffjdyhdthsggegfg</p>
+  <p>dhdhdjxfgddgffjdyhdthsggegfg</p>
+  <p>dhdhdjxfgddgffjdyhdthsggegfg</p>
+  <p>dhdhdjxfgddgffjdyhdthsggegfg</p>
+  <p>dhdhdjxfgddgffjdyhdthsggegfg</p>
+  <p>dhdhdjxfgddgffjdyhdthsggegfg</p>
+  <p>dhdhdjxfgddgffjdyhdthsggegfg</p>
+  <p>dhdhdjxfgddgffjdyhdthsggegfg</p>
+  <p>dhdhdjxfgddgffjdyhdthsggegfg</p>
+  <p>dhdhdjxfgddgffjdyhdthsggegfg</p>
+  <p>dhdhdjxfgddgffjdyhdthsggegfg</p>
+  </div>
+
+  <script type="text/javascript">
+   function printTime() 
+   {
+   
+   var d = new Date();
+   var hours = d.getHours();
+   var mins = d.getMinutes();
+   var secs = d.getSeconds();
+   document.getElementById("abcd").innerHTML = hours+":"+mins+":"+secs;
+   
+   }
+   setInterval(printTime, 1000);
+  </script>
+{% endblock %}
